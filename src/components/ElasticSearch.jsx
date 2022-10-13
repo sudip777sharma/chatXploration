@@ -31,7 +31,7 @@ const ElasticSearch = () => {
             setErr('');
             setSearchedUsers([]);
             if (searchUsername !== '') {
-                const q = query(collection(db, "users"), where("displayName", ">=", searchUsername), where("displayName", "<=", searchUsername + '\uf8ff'));
+                const q = query(collection(db, "users"), where("displayName", ">=", searchUsername.toLowerCase()), where("displayName", "<=", searchUsername.toLowerCase() + '\uf8ff'));
 
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
